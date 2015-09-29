@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+  username: codio
+  password:
+  encoding: unicode
+  template: template0
+  port:    5432
+  timeout: 5000
+  pool: 5
+development:
+  <<: *default
+  database: new_blog_development
+test:
+  <<: *default
+  database: new_blog_test
+production:
+  <<: *default
+  database: new_blog_production
+  username: new_blog
+  password: <%= ENV['NEW_BLOG_DATABASE_PASSWORD'] %>
